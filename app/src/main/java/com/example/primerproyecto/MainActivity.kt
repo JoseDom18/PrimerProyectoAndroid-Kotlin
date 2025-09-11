@@ -25,10 +25,13 @@ class MainActivity : AppCompatActivity() {
         val textoResultado: TextView=findViewById(R.id.mensaje) // muestra el resultado
         val botonSumar: Button=findViewById(R.id.sumar) // boton de accion
         val botonRestar: Button=findViewById(R.id.resta) // boton de accion
+        val miNombre: EditText=findViewById(R.id.nombre) // recibe nombre
+        val botoReinicio: Button=findViewById(R.id.reiniciar) // boton de reinicio
 
         miBoton.setOnClickListener {
 
             val numeroResultado = miNumero.text.toString().toIntOrNull()
+            val nombre: String?= miNombre.text?.toString()
 
 //            if (numeroResultado == null) textoResultado.text="Introduce un número."
 //            else if (numeroResultado < 18) {
@@ -39,18 +42,19 @@ class MainActivity : AppCompatActivity() {
 //                textoResultado.text="Tienes 18 años."
 //            }
 
-            actulizarMensaje(numeroResultado, textoResultado)
+            actulizarMensaje(numeroResultado, nombre, textoResultado)
 
         }
 
         botonSumar.setOnClickListener {
 
             var numeroResultado = miNumero.text.toString().toIntOrNull()
+            val nombre: String?= miNombre.text?.toString()
 
             if(numeroResultado==null) textoResultado.text="Introduce un número."
             else{
                 miNumero.setText((++numeroResultado).toString())
-                actulizarMensaje(numeroResultado, textoResultado)
+                actulizarMensaje(numeroResultado, nombre, textoResultado)
 
             }
 
@@ -59,22 +63,33 @@ class MainActivity : AppCompatActivity() {
         botonRestar.setOnClickListener {
 
             var numeroResultado = miNumero.text.toString().toIntOrNull()
+            val nombre: String?= miNombre.text?.toString()
 
             if(numeroResultado==null) textoResultado.text="Introduce un número."
             else {
                 miNumero.setText((--numeroResultado).toString())
-                actulizarMensaje(numeroResultado, textoResultado)
+                actulizarMensaje(numeroResultado, nombre, textoResultado)
             }
 
         }
+
+        botoReinicio.setOnClickListener {
+
+            textoResultado.text=""
+            miNombre.setText("")
+            miNumero.setText("")
+
+        }
+
     }
 
-    private fun actulizarMensaje (edad:Int?, textoResultado: TextView) {
+    private fun actulizarMensaje (edad:Int?, nombre: String?, textoResultado: TextView) {
         val mensaje = when {
+            nombre.isNullOrBlank() -> "Introduce tu nombre."
             edad==null -> "Introduce tu edad."
-            edad < 18 -> "Eres menor de edad."
-            edad > 18 -> "Eres mayor de edad."
-            else -> "Tienes 18 años."
+            edad < 18 -> "$nombre, eres menor de edad."
+            edad > 18 -> "$nombre, eres mayor de edad."
+            else -> "$nombre, tienes justo 18 años."
         }
         textoResultado.text= mensaje
     }
