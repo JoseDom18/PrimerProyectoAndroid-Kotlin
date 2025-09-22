@@ -8,8 +8,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.primerproyecto.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+   public lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,70 +23,48 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val miNumero: EditText=findViewById(R.id.introducirEdad) // recibe la entrada de texto
-        val miBoton: Button=findViewById(R.id.button) // boton de accion
-        val textoResultado: TextView=findViewById(R.id.mensaje) // muestra el resultado
-        val botonSumar: Button=findViewById(R.id.sumar) // boton de accion
-        val botonRestar: Button=findViewById(R.id.resta) // boton de accion
-        val miNombre: EditText=findViewById(R.id.nombre) // recibe nombre
-        val botoReinicio: Button=findViewById(R.id.reiniciar) // boton de reinicio
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        miBoton.setOnClickListener {
+        binding.button.setOnClickListener {
 
-            val numeroResultado = miNumero.text.toString().toIntOrNull()
-            val nombre: String?= miNombre.text?.toString()
-
-//            if (numeroResultado == null) textoResultado.text="Introduce un número."
-//            else if (numeroResultado < 18) {
-//                textoResultado.text="Eres menor de edad."
-//            } else if (numeroResultado > 18) {
-//                textoResultado.text="Eres mayor de edad."
-//            } else {
-//                textoResultado.text="Tienes 18 años."
-//            }
-
-            actulizarMensaje(numeroResultado, nombre, textoResultado)
+            actulizarMensaje(obtenerEdad(), obtenerNombre())
 
         }
 
-        botonSumar.setOnClickListener {
+        binding.sumar.setOnClickListener {
 
-            var numeroResultado = miNumero.text.toString().toIntOrNull()
-            val nombre: String?= miNombre.text?.toString()
-
-            if(numeroResultado==null) textoResultado.text="Introduce un número."
+            if(obtenerEdad()==null) binding.mensaje.text="Introduce un número"
             else{
-                miNumero.setText((++numeroResultado).toString())
-                actulizarMensaje(numeroResultado, nombre, textoResultado)
+                binding.introducirEdad.setText((obtenerEdad()?.plus(1)).toString())
+                actulizarMensaje(obtenerEdad(), obtenerNombre())
 
             }
 
         }
 
-        botonRestar.setOnClickListener {
+        binding.resta.setOnClickListener {
 
-            var numeroResultado = miNumero.text.toString().toIntOrNull()
-            val nombre: String?= miNombre.text?.toString()
+            if(obtenerEdad()==null) binding.mensaje.text="Introduce un número"
+            else{
+                binding.introducirEdad.setText((obtenerEdad()?.minus(1)).toString())
+                actulizarMensaje(obtenerEdad(), obtenerNombre())
 
-            if(numeroResultado==null) textoResultado.text="Introduce un número."
-            else {
-                miNumero.setText((--numeroResultado).toString())
-                actulizarMensaje(numeroResultado, nombre, textoResultado)
             }
 
         }
 
-        botoReinicio.setOnClickListener {
+        binding.reiniciar.setOnClickListener {
 
-            textoResultado.text=""
-            miNombre.setText("")
-            miNumero.setText("")
+            binding.introducirEdad.setText("")
+            binding.nombre.setText("")
+            binding.mensaje.text=""
 
         }
 
     }
 
-    private fun actulizarMensaje (edad:Int?, nombre: String?, textoResultado: TextView) {
+    private fun actulizarMensaje (edad:Int?, nombre: String?) {
         val mensaje = when {
             nombre.isNullOrBlank() -> "Introduce tu nombre."
             edad==null -> "Introduce tu edad."
@@ -91,6 +72,17 @@ class MainActivity : AppCompatActivity() {
             edad > 18 -> "$nombre, eres mayor de edad."
             else -> "$nombre, tienes justo 18 años."
         }
-        textoResultado.text= mensaje
+        binding.mensaje.text= mensaje
+    }
+
+    private fun obtenerEdad(): Int? {
+
+        val numeroResultado = binding.introducirEdad.text.toString().toIntOrNull()
+        return numeroResultado
+    }
+
+    private fun obtenerNombre(): String? {
+        val nombre : String? = binding.nombre.text?.toString()
+        return nombre
     }
 }
