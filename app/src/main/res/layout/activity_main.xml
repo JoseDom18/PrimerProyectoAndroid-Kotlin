@@ -103,6 +103,16 @@
             android:textSize="18sp"
             android:text="Reiniciar" />
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="120dp"/>
+
+        <Button
+            android:id="@+id/imc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IMC" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

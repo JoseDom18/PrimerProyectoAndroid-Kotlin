@@ -59,6 +59,13 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.imc.setOnClickListener {
+
+            startActivity(activity_imc)
+
+
+        }
+
     }
 
     private fun actulizarMensaje (edad:Int?, nombre: String?) {
