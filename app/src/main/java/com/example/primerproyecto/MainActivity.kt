@@ -62,11 +62,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.imc.setOnClickListener {
             val intent = Intent(this, ActivityImc::class.java)
-
             startActivity(intent)
-
-
         }
+
 
     }
 
