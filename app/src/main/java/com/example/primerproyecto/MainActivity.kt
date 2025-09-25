@@ -2,6 +2,7 @@ package com.example.primerproyecto
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -66,6 +67,33 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+
+
+    override fun onSaveInstanceState(objeto: Bundle){
+
+        val msj = binding.mensaje.text?.toString()
+
+        objeto.putString("nombre", obtenerNombre())
+        objeto.putInt("edad", obtenerEdad() ?: 0)
+        objeto.putString("mensaje", msj)
+        super.onSaveInstanceState(objeto)
+
+    }
+
+    override fun onRestoreInstanceState(
+        objeto: Bundle?,
+        persistentState: PersistableBundle?
+    ) {
+        super.onRestoreInstanceState(objeto, persistentState)
+        val nombre = objeto?.getString("nombre")
+        val edad = objeto?.getInt("edad")
+        val mensaje = objeto?.getString("mensaje")
+
+        binding.nombre.setText(nombre)
+        binding.introducirEdad.setText("" + edad)
+        binding.mensaje.setText(mensaje)
     }
 
     private fun actulizarMensaje (edad:Int?, nombre: String?) {
