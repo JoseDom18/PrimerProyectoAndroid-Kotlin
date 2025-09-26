@@ -7,9 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="3dp"
@@ -24,11 +28,12 @@
 
 
         <TextView
-            android:id="@+id/etiquetaNombre"
+            android:id="@+id/etiqueta1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="Introduce tu nombre:" />
+            android:text="@string/etiqueta1"/>
+
 
 
         <EditText
@@ -44,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="Introduce tu edad:" />
+            android:text="@string/etiqueta2" />
 
         <EditText
             android:id="@+id/introducirEdad"
@@ -59,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#EDE040"
-            android:text="Comprueba tu edad" />
+            android:text="@string/boton1" />
 
         <TextView
             android:id="@+id/mensaje"
@@ -96,12 +101,18 @@
             android:layout_width="0dp"
             android:layout_height="30dp" />
 
-        <Button
-            android:id="@+id/reiniciar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Reiniciar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/reiniciar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/boton2"
+                android:textSize="18sp" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -119,5 +130,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

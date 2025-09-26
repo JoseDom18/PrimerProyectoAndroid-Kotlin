@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
@@ -45,7 +47,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PESO"
+                    android:text="@string/eimc1"
                     android:textSize="32dp" />
 
                 <EditText
@@ -73,7 +75,7 @@
                     android:id="@+id/tituloEst"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ESTATURA (cm)"
+                    android:text="@string/eimc2"
                     android:textSize="32dp" />
 
                 <EditText
@@ -92,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#4CAF50"
-                android:text="Calcular" />
+                android:text="@string/botonimc1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,17 +111,31 @@
                     android:text=""
                     android:textSize="50dp" />
 
+                <ImageView
+                    android:id="@+id/imagen"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                     />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <Button
                     android:id="@+id/Regresar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#009688"
-                    android:text="Regresar" />
+                    android:text="@string/btnimc2" />
+
             </LinearLayout>
 
 
         </LinearLayout>
 
-
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

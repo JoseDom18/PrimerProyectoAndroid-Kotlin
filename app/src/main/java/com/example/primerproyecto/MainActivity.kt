@@ -25,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(savedInstanceState != null) {
+            val mensaje = savedInstanceState.getString("mensaje")
+
+            binding.mensaje.setText(mensaje)
+        }
+
         binding.button.setOnClickListener {
 
             actulizarMensaje(obtenerEdad(), obtenerNombre())
@@ -70,41 +76,23 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onSaveInstanceState(objeto: Bundle){
 
-        val msj = binding.mensaje.text?.toString()
-
-        objeto.putString("nombre", obtenerNombre())
-        objeto.putInt("edad", obtenerEdad() ?: 0)
-        objeto.putString("mensaje", msj)
+        objeto.putString("mensaje", actulizarMensaje(obtenerEdad(), obtenerNombre()) ?: "no se guardo")
         super.onSaveInstanceState(objeto)
 
     }
 
-    override fun onRestoreInstanceState(
-        objeto: Bundle?,
-        persistentState: PersistableBundle?
-    ) {
-        super.onRestoreInstanceState(objeto, persistentState)
-        val nombre = objeto?.getString("nombre")
-        val edad = objeto?.getInt("edad")
-        val mensaje = objeto?.getString("mensaje")
-
-        binding.nombre.setText(nombre)
-        binding.introducirEdad.setText("" + edad)
-        binding.mensaje.setText(mensaje)
-    }
-
-    private fun actulizarMensaje (edad:Int?, nombre: String?) {
+    private fun actulizarMensaje (edad:Int?, nombre: String?): String? {
         val mensaje = when {
-            nombre.isNullOrBlank() -> "Introduce tu nombre."
-            edad==null -> "Introduce tu edad."
-            edad < 18 -> "$nombre, eres menor de edad."
-            edad > 18 -> "$nombre, eres mayor de edad."
-            else -> "$nombre, tienes justo 18 años."
+            nombre.isNullOrBlank() -> getString(R.string.res1)
+            edad==null -> getString(R.string.res2)
+            edad < 18 -> getString(R.string.res3, nombre)
+            edad > 18 -> getString(R.string.res4, nombre)
+            else -> getString(R.string.res5, nombre)
         }
         binding.mensaje.text= mensaje
+        return mensaje
     }
 
     private fun obtenerEdad(): Int? {

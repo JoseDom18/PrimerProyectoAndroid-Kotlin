@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">PrimerProyecto</string>
+    <string name="etiqueta1">Ingresa tu nombre:</string>
+    <string name="etiqueta2">Ingresa tu edad:</string>
+    <string name="boton1">Comprueba tu edad</string>
+    <string name="boton2">Reiniciar</string>
+    <string name="eimc1">Peso</string>
+    <string name="eimc2">Estatura (cm)</string>
+    <string name="botonimc1">Calcular</string>
+    <string name="btnimc2">Regresar</string>
+    <string name="res1">Ingresa tu nombre</string>
+    <string name="res2">Ingresa tu edad</string>
+    <string name="res3">%s, eres menor de edad.</string>
+    <string name="res4">%s, eres mayor de edad</string>
+    <string name="res5">%s, tienes justo 18 años</string>
+    <string name="imc1">%.2f Obesidad</string>
+    <string name="imc2">%.2f Sobrepeso</string>
+    <string name="imc3">%.2f Peso saludable</string>
+    <string name="imc4">%.2f Peso bajo</string>
+    <string name="error">Datos no validos</string>
 </resources>

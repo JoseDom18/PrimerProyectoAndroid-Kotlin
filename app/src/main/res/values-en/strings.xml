@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PrimerProyecto</string>
+    <string name="etiqueta1">Enter your name:</string>
+    <string name="etiqueta2">Enter your age:</string>
+    <string name="boton1">Verify age:</string>
+    <string name="boton2">Restart</string>
+    <string name="eimc1">Weight</string>
+    <string name="eimc2">Height</string>
+    <string name="botonimc1">Calculate</string>
+    <string name="btnimc2">Go back</string>
+    <string name="res1">Enter your name.</string>
+    <string name="res2">Enter your age.</string>
+    <string name="res3">%s, you are underage.</string>
+    <string name="res4">%s, you are of legal age.</string>
+    <string name="res5">%s, you are exactly 18 years old.</string>
+    <string name="imc1">%.2f Obesity</string>
+    <string name="imc2">%.2f Overweight</string>
+    <string name="imc3">%.2f Healthy weight</string>
+    <string name="imc4">%.2f Underweight</string>
+    <string name="error">Invalid Data</string>
+</resources>
